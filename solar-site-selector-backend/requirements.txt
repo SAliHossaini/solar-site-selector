@@ -1,0 +1,6 @@
+geopandas
+rasterio
+pvlib
+numpy
+pandas
+shapely
