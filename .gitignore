@@ -1,23 +1,16 @@
 # Python
 __pycache__/
-*.py[cod]
-*.egg-info/
 .env
 .venv/
-solar_env/
-
-# Jupyter Notebooks checkpoints
-.ipynb_checkpoints/
 
 # Logs and output
 *.log
-*.csv
+*.tif
 *.sqlite3
 outputs/
-*.geojson
+
+# JS 
+node_modules/
 
 # VSCode
 .vscode/
-
-
-

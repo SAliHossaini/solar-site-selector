@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solar Parcel Scoring App</title>
+
+  <!-- ArcGIS SDK Theme + Custom App Styles -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.26/@arcgis/core/assets/esri/themes/light/main.css" />
+  <link rel="stylesheet" href="./style.css" />
+
+  <!-- Import Map for ArcGIS Core Modules -->
+  <script type="importmap">
+    {
+      "imports": {
+        "@arcgis/core/": "https://js.arcgis.com/4.26/@arcgis/core/"
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <!-- Loader / Status Message -->
+  <div id="statusMessage" style="
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0079c1;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 20;
+    display: none;
+  "></div>
+
+  <!-- Toggle Sidebar Button (moved outside the sidebar) -->
+  <div id="toggleBtnWrapper" style="
+    position: absolute;
+    top: 12px;
+    right: 0;
+    z-index: 15;
+  ">
+    <button id="toggleSidebar" class="collapse-btn">⏴</button>
+  </div>
+
+  <!-- Map Container -->
+  <div id="viewDiv"></div>
+
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <div class="sidebar-header">
+      <h2>☀ Solar Tools</h2>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>Map Layers</h4>
+      <div id="layerToggles"></div>
+    </div>
+
+    <div class="sidebar-section">
+      <h4>AOI Tools</h4>
+      <button id="drawAOI">Draw AOI</button>
+      <button id="clearAOI">Clear AOI</button>
+      <button id="top3Btn">Top 3 Parcels</button>
+      <button id="exportAOI">Export AOI (GeoJSON)</button>
+    </div>
+
+    <div id="aoiAreaSection" style="display: none;">
+      <h4>AOI Area</h4>
+      <div id="aoiAreaText"></div>
+    </div>
+    
+    <div id="top3Summary" style="display: none; margin-top: 10px;"></div>
+
+    <div id="parcelSummary" style="display: none;">
+      <h4>Top Parcel Summary</h4>
+      <div id="summaryArea"></div>
+      <div id="summaryKWh"></div>
+      <div id="summaryGrade"></div>
+      <div id="summaryGHI"></div>
+    </div>
+  </div>
+
+  <!-- App Bootstrapping -->
+  <script type="module">
+    import { init } from "./js/app.js";
+    import { setupUI, createLayerToggles } from "./js/ui.js";
+    import { getAllLayers } from "./js/layers.js";
+
+    window.addEventListener("DOMContentLoaded", async () => {
+      setupUI();
+      await init();
+      createLayerToggles(getAllLayers());
+    });
+  </script>
+</body>
+</html>

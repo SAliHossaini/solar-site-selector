@@ -14,9 +14,41 @@ A full-stack solar parcel analysis tool that enables users to interactively sele
 1. Open `solar-site-selector-demo/index.html` in your browser.
 2. Requires internet access to load ArcGIS JavaScript API.
 
-### Backend
-1. Create a Python virtual environment:
-   ```bash
-   python -m venv venv
-   .\venv\Scripts\activate
-   pip install -r requirements.txt
+# Solar Site Selector – Frontend
+
+An interactive web app for identifying top parcels suitable for solar development. Built with the ArcGIS Maps SDK for JavaScript, the tool lets users draw Areas of Interest (AOIs), view parcel-level solar potential, and export results.
+
+![App Screenshot](./assets/screenshot.png)
+
+## Features
+
+- Draw AOIs directly on the map
+- View parcels and transmission lines
+- Fetch GHI (Global Horizontal Irradiance) via NASA API
+- Rank and highlight Top 3 parcels by potential yield
+- Export AOI and Top 3 results to GeoJSON
+- Toggle layers and analyze solar potential
+
+---
+
+## Directory Structure
+
+```bash
+solar-site-selector-frontend/
+├── index.html                  # Main HTML layout with map + sidebar
+├── style.css                   # Responsive sidebar + UI styling
+├── js/
+│   ├── main.js                 # Entry point (init + view)
+│   ├── config.js               # Map config (center, zoom, IDs)
+│   ├── api.js                  # GHI data fetch from NASA
+│   ├── layers.js               # GeoJSON layers: parcels, transmission
+│   └── ui.js                   # Sidebar toggle, status banner, layer toggles
+├── data/
+│   ├── parcels.geojson
+│   ├── transmission_lines.geojson
+│   └── output_scores.geojson   # Result from backend processing
+├── assets/
+│   └── screenshot.png          # Visual for GitHub or docs
+└── README.md
+```
+
