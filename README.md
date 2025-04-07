@@ -18,7 +18,7 @@ A full-stack solar parcel analysis tool that enables users to interactively sele
 
 An interactive web app for identifying top parcels suitable for solar development. Built with the ArcGIS Maps SDK for JavaScript, the tool lets users draw Areas of Interest (AOIs), view parcel-level solar potential, and export results.
 
-![App Screenshot](./assets/screenshot.png)
+![App Screenshot](./solar-site-selector-frontend/assets/screenshot.png)
 
 ## Features
 
